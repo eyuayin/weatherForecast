@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Weather Query</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+    <script src="./angular.js"></script>
+  </head>
+  <body ng-app="weatherQuery" ng-controller="weatherCtrl">
+  <div id="header">
+    <label for="date">Choose Date:</label>
+    <input type="text" id="date" ng-model="queryDate"/>
+    <label for="city" >City:</label>
+    <input type="text" id="city" ng-model="queryCity"/>
+    <button name="search" ng-click="queryResult(queryDate,queryCity)">Search</button>
+  </div>
+  <div id="conditon">
+     <p>{{queryDate+" "+queryCity+"weekly weather report:"}}</p>
+  </div>
+  <div id="weather-info">
+
+  </div>
+  </body>
+</html>
