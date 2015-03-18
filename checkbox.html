@@ -3,22 +3,40 @@
   <head>
     <meta charset="utf-8"/>
     <title>Weather Query</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
-    <script src="./angular.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./weatherFC.js"></script>
   </head>
-  <body ng-app="weatherQuery" ng-controller="weatherCtrl">
+  <body ng-app="weatherQuery" ng-controller="weatherCtrl" ng-init="queryDate='2015-03-18'">
   <div id="header">
     <label for="date">Choose Date:</label>
-    <input type="text" id="date" ng-model="queryDate"/>
+    <input type="text" id="date" ng-model="queryDate" />
     <label for="city" >City:</label>
-    <input type="text" id="city" ng-model="queryCity"/>
-    <button name="search" ng-click="queryResult(queryDate,queryCity)">Search</button>
+    <input type="text" id="city" ng-model="queryCity" />
+    <button name="search" ng-click="queryResult(queryDate,queryCity)" ng-disabled="buttonenable">Search</button>
   </div>
   <div id="conditon">
      <p>{{queryDate+" "+queryCity+"weekly weather report:"}}</p>
   </div>
   <div id="weather-info">
-
+    <table>
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>City</th>
+        <th>max</th>
+        <th>min</th>
+        <th>weather</th>
+      </tr>
+      </thead>
+      <tr ng-repeat="data in weatherResult">
+        <td>{{data.date}}</td>
+        <td>{{queryCity}}</td>
+        <td>{{data.max}}</td>
+        <td>{{data.min}}</td>
+        <td>{{data.weather}}</td>
+        
+      </tr>
+    </table>
   </div>
   </body>
 </html>
