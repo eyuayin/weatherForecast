@@ -4,21 +4,29 @@
     <meta charset="utf-8"/>
     <title>Weather Query</title>
     <script src="./bower_components/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./weather.css"/>
     <script src="./weatherFC.js"></script>
   </head>
-  <body ng-app="weatherQuery" ng-controller="weatherCtrl" ng-init="queryDate='2015-03-18'">
-  <div id="header">
-    <label for="date">Choose Date:</label>
-    <input type="text" id="date" ng-model="queryDate" />
-    <label for="city" >City:</label>
-    <input type="text" id="city" ng-model="queryCity" />
-    <button name="search" ng-click="queryResult(queryDate,queryCity)" ng-disabled="buttonenable">Search</button>
+  <body ng-app="weatherQuery" ng-controller="weatherCtrl">
+  <div class="bs-example margin_top">
+  <form class="form-inline ">
+    <div class="form-group ">
+      <label for="1">Date</label>
+      <input type="text" class="form-control" id="1" placeholder="yyyy-mm-dd" ng-model="queryDate">
+    </div>
+    <div class="form-group">
+      <label for="2">City:</label>
+      <input class="form-control" id="2" placeholder="please input city name" ng-model="queryCity">
+    </div>
+    <button class="btn btn-default"  ng-click="queryResult(queryDate,queryCity)" ng-disabled="!queryDate.match(wetherValid)">search</button>
+  </form>
   </div>
-  <div id="conditon">
-     <p>{{queryDate+" "+queryCity+"weekly weather report:"}}</p>
+  <div class="margin_and_font">
+     <p>{{queryDate+" "+ queryCity +" weekly weather forecast:"}}</p>
   </div>
   <div id="weather-info">
-    <table>
+    <table class="table table-bordered">
       <thead>
       <tr>
         <th>Date</th>
@@ -30,7 +38,7 @@
       </thead>
       <tr ng-repeat="data in weatherResult">
         <td>{{data.date}}</td>
-        <td>{{queryCity}}</td>
+        <td>{{data.city}}</td>
         <td>{{data.max}}</td>
         <td>{{data.min}}</td>
         <td>{{data.weather}}</td>
@@ -38,5 +46,8 @@
       </tr>
     </table>
   </div>
+
+  <!--<input type="text" class="input-medium" id="exampleInputName2" placeholder="yyyy-mm-dd" ng-model="queryDate">-->
+
   </body>
 </html>
