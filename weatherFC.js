@@ -45,7 +45,7 @@ app.controller('weatherCtrl',function($scope,$http){
             var row = {};
             var rowDate = new Date(someday);
             rowDate.setDate(someday.getDate() + j);
-            row.date = rowDate.toLocaleDateString();
+            row.date = rowDate;
             row.max = parseInt(response.list[i].temp.max - 273.15) + "°C";
             row.min = parseInt(response.list[i].temp.min - 273.15) + "°C";
             row.weather = response.list[i].weather[0].description;

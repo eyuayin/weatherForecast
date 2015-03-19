@@ -37,7 +37,7 @@
       </tr>
       </thead>
       <tr ng-repeat="data in weatherResult">
-        <td>{{data.date}}</td>
+        <td>{{data.date | date:'yyyy-MM-dd'}}</td>
         <td>{{data.city}}</td>
         <td>{{data.max}}</td>
         <td>{{data.min}}</td>
