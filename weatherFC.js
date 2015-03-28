@@ -3,16 +3,17 @@
  */
 var app = angular.module('weatherQuery',[]);
 app.controller('weatherCtrl',function($scope,$http){
-//  $scope.queryDate="2015-03-18";
-//  $scope.queryCity="shanghai";
+  $scope.queryDate="2015-03-18";
+  $scope.queryCity="shanghai";
   $scope.parseInt= parseInt;
   $scope.wetherValid=new RegExp(/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/);
 
 
 
   $scope.queryResult=function(queryDate,queryCity){
-      if(queryDate&&queryCity)
-      {
+    console.log(queryDate);
+    console.log(queryCity);
+    if(queryDate&&queryCity) {
 //  1.filter and verify
       var dataArray = $scope.queryDate.split("-");
       var today,someday,para;
@@ -24,7 +25,7 @@ app.controller('weatherCtrl',function($scope,$http){
         para = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&cnt=16"+"&q="+$scope.queryCity;
 //  }else if(someday == today ){
 //        para = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&cnt=7"+"&"+$scope.queryCity;
-      }else {
+      } else {
 //        para = "";
         alert("sorry for no history data!");
         return;
@@ -61,9 +62,8 @@ app.controller('weatherCtrl',function($scope,$http){
           $scope.weatherResult = weatherData;
         }
       })
-
-      }
-      else{
+    }
+    else{
       alert("Please choose your city and date!");
     }
   };
