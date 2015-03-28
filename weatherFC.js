@@ -67,4 +67,19 @@ app.controller('weatherCtrl',function($scope,$http){
       alert("Please choose your city and date!");
     }
   };
-});
+})
+  .directive("buttonDisable",function() {
+    return{
+      require: "ngModel",
+      link: function (scope, iele, attrs, ctl, fu) {
+        console.log("ctl",ctl);
+        ctl.$parsers.push(function(value){
+        var isDate = (/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/).test(value);
+        ctl.$setValidity("isDate",isDate);
+        console.log("ctlafter",ctl);
+        });
+    }
+  }
+
+
+  });
